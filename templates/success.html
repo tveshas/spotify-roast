@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ur vibe report // spotify roast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .emoji-font { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif; }
+        .spotify-card { background: rgba(40,40,40,0.8); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="bg-[#121212] min-h-screen text-[#b3b3b3]">
+    <div class="max-w-2xl mx-auto px-4 py-8">
+        <div class="flex items-center justify-between mb-8">
+            <a href="/" class="text-[#1DB954] hover:text-[#1ed760] text-sm">← new roast</a>
+            <div class="flex items-center gap-3">
+                <img src="{{ user_profile.images[0].url if user_profile.images else 'https://i.scdn.co/image/ab6775700000ee8514d13a2b3290a5d9c01c8d01' }}" 
+                     class="w-8 h-8 rounded-full border-2 border-[#1DB954]">
+                <span class="text-white">@{{ user_profile.display_name|lower }}'s L</span>
+            </div>
+        </div>
+
+        <div class="spotify-card p-6 mb-6 backdrop-blur-lg">
+            <div class="flex items-center mb-4 gap-2">
+                <div class="w-8 h-8 bg-[#1DB954] rounded-full flex items-center justify-center emoji-font">🤖</div>
+                <h2 class="text-white font-bold">ur sonic roast 🔥</h2>
+            </div>
+            <div class="text-sm leading-relaxed whitespace-pre-wrap emoji-font">
+                {{ genz_analysis|safe }}
+            </div>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+            <div class="spotify-card p-6 backdrop-blur-lg">
+                <div class="flex items-center mb-3 gap-2">
+                    <div class="emoji-font">🎧</div>
+                    <h3 class="text-white font-semibold">genre gyatt</h3>
+                </div>
+                {% for tr, genres in analysis.top_genres.items() %}
+                <div class="mb-4">
+                    <p class="text-xs text-[#535353] mb-1">{{ time_ranges[tr]|lower }}</p>
+                    {% for genre, count in genres.items() %}
+                    <div class="flex justify-between items-center py-1">
+                        <span class="text-sm">{{ genre|lower }}</span>
+                        <span class="text-xs text-[#535353]">{{ count }}x</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="spotify-card p-6 backdrop-blur-lg">
+                <div class="flex items-center mb-3 gap-2">
+                    <div class="emoji-font">👑</div>
+                    <h3 class="text-white font-semibold">aux royalty</h3>
+                </div>
+                {% for tr, artists in analysis.top_artists.items() %}
+                <div class="mb-4">
+                    <p class="text-xs text-[#535353] mb-1">{{ time_ranges[tr]|lower }}</p>
+                    {% for artist, count in artists.items() %}
+                    <div class="flex justify-between items-center py-1">
+                        <span class="text-sm">{{ artist|lower }}</span>
+                        <span class="text-xs text-[#535353]">{{ count }}x</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <p class="text-center text-xs text-[#535353] mt-8 emoji-font">
+            psst... ur top genre's giving {{ "main character energy" if analysis.popularity_stats.short_term.average > 70 else "NPC vibes" }} 💅
+        </p>
+    </div>
+</body>
+</html>
