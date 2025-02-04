@@ -9,10 +9,9 @@ A fun web app that analyzes your Spotify listening history and roasts your music
 - 🤖 Generates AI-powered roasts in Gen-Z style
 - 💅 Clean, Spotify-inspired UI using Tailwind CSS
 <img width="407" alt="Screenshot 2025-02-04 at 11 39 39" src="https://github.com/user-attachments/assets/5380ff66-cf6e-4c86-952d-3f8bfe1a9f9a" />
-<img width="635" alt="Screenshot 2025-02-04 at 11 39 27" src="https://github.com/user-attachments/assets/dada17d9-5ce9-4f45-a8f5-c0ec3d5ac5a6" />
-<img width="612" alt="Screenshot 2025-02-04 at 11 39 21" src="https://github.com/user-attachments/assets/9f7bd933-eaf3-49dd-8d2b-0e4df5c2a577" />
 <img width="664" alt="Screenshot 2025-02-04 at 11 39 00" src="https://github.com/user-attachments/assets/c1d25725-19d1-433d-90fd-b2a3fbda41dc" />
-
+<img width="612" alt="Screenshot 2025-02-04 at 11 39 21" src="https://github.com/user-attachments/assets/9f7bd933-eaf3-49dd-8d2b-0e4df5c2a577" />
+<img width="635" alt="Screenshot 2025-02-04 at 11 39 27" src="https://github.com/user-attachments/assets/dada17d9-5ce9-4f45-a8f5-c0ec3d5ac5a6" />
 ## Setup
 
 1. Clone the repository:
