@@ -1,7 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from spotipy.cache_handler import FlaskSessionCacheHandler
+from spotipy.cache_handler import CacheHandler
+
+class CustomSessionCacheHandler(CacheHandler):
+    def __init__(self, session):
+        self.session = session
+
+    def get_cached_token(self):
+        token_info = self.session.get('token_info', None)
+        return token_info
+
+    def save_token_to_cache(self, token_info):
+        self.session['token_info'] = token_info
 from urllib.parse import urlencode
 import json
 import os
@@ -121,7 +132,7 @@ def callback():
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
         redirect_uri=REDIRECT_URI,
-        cache_handler=FlaskSessionCacheHandler(session)
+        cache_handler=CustomSessionCacheHandler(session)
     )
     
     try:
