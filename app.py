@@ -34,8 +34,10 @@ OPENAI_KEY = os.getenv('OPENAI_API_KEY')
 REDIRECT_URI = "http://localhost:5001/callback"
 
 # Initialize OpenAI client
-client = OpenAI(api_key=OPENAI_KEY)
-
+client = OpenAI(
+    api_key=OPENAI_KEY,
+    http_client=None
+)
 # Helper functions
 def extract_user_id(input_string):
     url_match = re.search(r'spotify\.com/user/([a-zA-Z0-9]+)', input_string)
